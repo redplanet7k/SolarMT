@@ -18,24 +18,6 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 
-# Injeção de CSS para mudar o fundo para verde claro e garantir texto escuro
-st.markdown("""
-    <style>
-    .stApp {
-        background-color: #f0f7f4; /* Verde bem claro, quase branco */
-    }
-    h1, h2, h3, p, span, label {
-        color: #1a3a1e !important; /* Verde escuro para contraste nos textos */
-    }
-    .stMetric label {
-        color: #1a3a1e !important;
-    }
-    .stMetric div {
-        color: #2e7d32 !important; /* Valor numérico em verde médio */
-    }
-    </style>
-    """, unsafe_allow_index=True)
-
 # Módulos internos do projeto
 from data import (
     CIDADE, MESES, DIAS_POR_MES, IRRADIANCIA_MENSAL,
