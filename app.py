@@ -130,15 +130,13 @@ div[data-testid="stMetric"] > div { background:var(--card) !important; border-ra
 # ══════════════════════════════════════════════════════════════════════════════
 # PALETA PLOTLY
 # ══════════════════════════════════════════════════════════════════════════════
-PLOTLY_TEMPLATE = dict(
-    layout=go.Layout(
-        paper_bgcolor="#161B22",
-        plot_bgcolor="#0D1117",
-        font=dict(family="DM Sans", color="#E6EDF3"),
-        xaxis=dict(gridcolor="#30363D", zerolinecolor="#30363D"),
-        yaxis=dict(gridcolor="#30363D", zerolinecolor="#30363D"),
-        legend=dict(bgcolor="#161B22", bordercolor="#30363D"),
-    )
+PLOTLY_LAYOUT = dict(
+    paper_bgcolor="#161B22",
+    plot_bgcolor="#0D1117",
+    font=dict(family="DM Sans", color="#E6EDF3"),
+    xaxis=dict(gridcolor="#30363D", zerolinecolor="#30363D"),
+    yaxis=dict(gridcolor="#30363D", zerolinecolor="#30363D"),
+    legend=dict(bgcolor="#161B22", bordercolor="#30363D"),
 )
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -409,7 +407,7 @@ with tab1:
     ))
 
     fig.update_layout(
-        **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+        **PLOTLY_LAYOUT,
         title="Geração Estimada vs Consumo Mensal (kWh)",
         barmode="overlay",
         height=420,
@@ -475,7 +473,7 @@ with tab2:
         )
 
     fig2.update_layout(
-        **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+        **PLOTLY_LAYOUT,
         height=560,
         showlegend=True,
     )
@@ -493,7 +491,7 @@ with tab2:
             marker_colors=["#F5A623", "#FFD580", "#F0A500", "#E8902A", "#D4770A"],
         ))
         fig_pie.update_layout(
-            **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+            **PLOTLY_LAYOUT,
             title="Composição do Investimento",
             height=320,
         )
@@ -539,7 +537,7 @@ with tab3:
             textposition="outside",
         ))
         fig_bar.update_layout(
-            **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+            **PLOTLY_LAYOUT,
             title=f"Perdas do Sistema (Total: {perdas['Total']}%)",
             yaxis_title="Perda (%)",
             height=320,
@@ -569,7 +567,7 @@ with tab3:
             annotation_text=f"β* = {ang['angulo_otimo_graus']}°",
         )
         fig_ang.update_layout(
-            **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+            **PLOTLY_LAYOUT,
             title="Otimização do Ângulo de Inclinação",
             xaxis_title="Ângulo β (graus)",
             yaxis_title="Irradiância média (kWh/m²/dia)",
@@ -597,7 +595,7 @@ with tab3:
     fig_temp.add_vline(x=TEMP_OPERACAO_LOCAL, line_dash="dash", line_color="#F5A623",
                        annotation_text=f"T_op = {TEMP_OPERACAO_LOCAL}°C ({per['Temperatura']}% perda)")
     fig_temp.update_layout(
-        **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+        **PLOTLY_LAYOUT,
         title="Perda de Potência por Temperatura (αT = -0,35%/°C)",
         xaxis_title="Temperatura de Operação (°C)",
         yaxis_title="Perda (%)",
@@ -632,7 +630,7 @@ with tab4:
     fig_stat.add_hline(y=media_irr - desvio_irr, line_dash="dot",
                        line_color="#8B949E", annotation_text="-1σ")
     fig_stat.update_layout(
-        **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+        **PLOTLY_LAYOUT,
         title="Irradiância Solar Mensal — Lucas do Rio Verde/MT (CRESESB)",
         yaxis_title="HSP (kWh/m²/dia)",
         height=360,
@@ -661,7 +659,7 @@ with tab4:
     fig_dist.add_vline(x=media_anual_ger, line_dash="dash", line_color="#27AE60",
                        annotation_text=f"μ = {media_anual_ger:.0f} kWh/ano")
     fig_dist.update_layout(
-        **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+        **PLOTLY_LAYOUT,
         title=f"Distribuição de Geração Anual — IC 95%: [{lo_95:.0f}, {hi_95:.0f}] kWh",
         xaxis_title="Geração Anual (kWh)",
         yaxis_title="Densidade de Probabilidade",
@@ -691,7 +689,7 @@ with tab5:
         name="CO₂ evitado acumulado",
     ))
     fig_co2.update_layout(
-        **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+        **PLOTLY_LAYOUT,
         title="CO₂ Evitado Acumulado ao Longo de 25 Anos (toneladas)",
         yaxis_title="CO₂ (t)",
         height=300,
