@@ -2,5 +2,11 @@
 base="light"
 primaryColor="#2e7d32"
 backgroundColor="#f0f7f4"
-secondaryBackgroundColor="#e8f5e9"
+secondaryBackgroundColor="#dcedc8"
 textColor="#1a3a1e"
+font="sans serif"
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
