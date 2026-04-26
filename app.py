@@ -464,16 +464,35 @@ with tab2:
         name="Acumulado",
     ), row=2, col=1)
 
-    # Linha de payback
-    fig2.add_hline(y=0, line_dash="dash", line_color="#E74C3C",
-                   annotation_text="Ponto de Equilíbrio", row=2, col=1)
+    # Linha de payback (add_shape é mais estável em subplots)
+    fig2.add_shape(
+        type="line", x0=0, x1=1, y0=0, y1=0,
+        xref="x2 domain", yref="y2",
+        line=dict(dash="dash", color="#E74C3C", width=1.5),
+    )
+    fig2.add_annotation(
+        x=0, y=0, xref="x2 domain", yref="y2",
+        text="Ponto de Equilíbrio", showarrow=False,
+        xanchor="left", yanchor="bottom",
+        font=dict(color="#E74C3C", size=10),
+    )
 
     if pb["payback_simples_anos"]:
-        fig2.add_vline(
-            x=f"Ano {pb['payback_simples_anos']}",
-            line_dash="dot", line_color="#F5A623",
-            annotation_text=f"Payback: Ano {pb['payback_simples_anos']}",
-            row=2, col=1,
+        # add_vline com eixo categórico em subplots exige add_shape
+        pb_idx = pb["payback_simples_anos"] - 1   # índice 0-based no eixo x categórico
+        fig2.add_shape(
+            type="line",
+            x0=pb_idx, x1=pb_idx, y0=0, y1=1,
+            xref="x2", yref="y2 domain",
+            line=dict(dash="dot", color="#F5A623", width=2),
+        )
+        fig2.add_annotation(
+            x=pb_idx, y=1,
+            xref="x2", yref="y2 domain",
+            text=f"Payback: Ano {pb['payback_simples_anos']}",
+            showarrow=False,
+            yanchor="bottom",
+            font=dict(color="#F5A623", size=11),
         )
 
     fig2.update_layout(
