@@ -6,6 +6,7 @@ Aplica leis do efeito fotovoltaico, eficiência dos módulos e otimização de s
 
 import numpy as np
 from data import (
+    LATITUDE,
     IRRADIANCIA_MENSAL, DIAS_POR_MES, MESES,
     MODULO_POTENCIA_WP, MODULO_AREA_M2, MODULO_EFICIENCIA,
     FATOR_DESEMPENHO, MODULO_COEF_TEMP, TEMP_REFERENCIA,
