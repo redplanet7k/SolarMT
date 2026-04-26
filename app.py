@@ -759,4 +759,6 @@ st.markdown("---")
 st.caption(
     "☀️ **SolarSim** · Projeto Integrador BCT/UFMT · Lucas do Rio Verde/MT · "
     "Física III · Prob. e Estatística · Mat. Financeira · Cálculo III · Gestão do Conhecimento"
+
+    st.markdown( "Criado por"[Atlas Kennedy](https://www.instagram.com/_atlaskennedydc)"-Graduando em Ciência e Tecnologia pela UFMT -2026.1")
 )
