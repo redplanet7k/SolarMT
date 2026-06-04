@@ -191,4 +191,5 @@ def co2_evitado(geracao_anual_kwh: float) -> dict:
         "kg_co2_ano":        round(kg_por_ano, 1),
         "ton_co2_25anos":    round(total_25_anos, 1),
         "arvores_eq":        round(total_25_anos * 1000 / 21.77),  # 1 árvore ≈ 21,77 kgCO₂/ano
+        # Escrito por Angelica Santos
     }
